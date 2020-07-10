@@ -22,3 +22,73 @@
     <div class="right-button"> > </div>
   </div>
 */
+
+const carouselContainer = document.querySelector(".carousel-container")
+
+function carouselCreater () {
+
+const carousel = document.createElement('div')
+carousel.className = "carousel"
+
+const leftButton = document.createElement('div')
+leftButton.className = "left-button"
+
+const image1 = document.createElement('img')
+image1.src = "./assets/carousel/mountains.jpeg"
+image1.className = "yes"
+
+const image2 = document.createElement('img')
+image2.src = "./assets/carousel/computer.jpeg"
+image2.className = "display-off"
+
+const image3 = document.createElement('img')
+image3.src = "./assets/carousel/trees.jpeg"
+image3.className = "display-off"
+
+const image4 = document.createElement('img')
+image4.src = "./assets/carousel/turntable.jpeg"
+image4.className = "display-off"
+
+const rightButton = document.createElement('div')
+rightButton.className = "right-button"
+
+function showImage (){
+  if (image1.className === "yes"){
+    image1.classList.toggle("display-off")
+    image2.classList.toggle("display-off")
+    image1.classList.toggle("yes")
+    image2.classList.toggle("yes")
+  } else if (image2.className === "yes"){
+    image2.classList.toggle("display-off")
+    image3.classList.toggle("display-off")
+    image2.classList.toggle("yes")
+    image3.classList.toggle("yes")
+  } else if (image3.className === "yes"){
+    image3.classList.toggle("display-off")
+    image4.classList.toggle("display-off")
+    image3.classList.toggle("yes")
+    image4.classList.toggle("yes")
+  } else if (image4.className === "yes") {
+    image4.classList.toggle("display-off")
+    image1.classList.toggle("display-off")
+    image4.classList.toggle("yes")
+    image1.classList.toggle("yes")
+  }
+  gsap.from('.yes' , {duration: 3, opacity: 0, scale: 0.3 , ease: 'back'})
+}
+
+
+rightButton.addEventListener('click', showImage)
+
+
+leftButton.addEventListener('click', showImage)
+
+carousel.append(leftButton, image1, image2, image3, image4, rightButton)
+
+
+  return carousel
+}
+
+carouselContainer.appendChild(carouselCreater())
+
+
